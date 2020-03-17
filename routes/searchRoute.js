@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 let validator = require('express-joi-validation')({
-    passError: true // NOTE: this tells the module to pass the error along for you
+    passError: true 
 });
 const searchService = require('../services/searchAPI.service');
 let Schema = {
@@ -12,7 +12,6 @@ let Schema = {
 router.get('/users/:userId', validator.params(Schema), (req, res, next) => {
     try {
         searchService.searchResult(req).then(data => {
-            console.log("Data", data)
             res.status(200).send({
               UserData: data
             })

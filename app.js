@@ -50,22 +50,7 @@ app.use(function (req, res, next) {
 
 // catch 404 and forward to error handler
 app.use(function (err, req, res, next) {
-  //logger.debug(err);
-  /*res.status(HTTP_CODES.NOT_FOUND)
-    .send(errorUtil.buildErrorMessage(err));*/
-  if(err.name === "SequelizeDatabaseError")
-  {
-    console.log("Invalid Column Name"+err.message);
-    res.status(HTTP_CODES.NOT_FOUND)
-        .send(errorUtil.invalidField(err));
-  }
-  else if(err.name ==="SequelizeAccessDeniedError")
-  {
-    console.log("Invalid Password");
-    res.status(HTTP_CODES.INTERNAL_SERVER_ERROR)
-        .send(errorUtil.buildErrorMessageDev(err));
-  }
-  else if (err.Status == 404) {
+ if (err.Status == 404) {
     var errorMessage = {
       "metadata":{
         "Status_Code": parseInt(err.Status),
