@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
 });
 app.use(helmet());
 
-
+app.use('/',require('./routes/searchRoute'));
 
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
